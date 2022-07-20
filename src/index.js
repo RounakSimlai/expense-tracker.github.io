@@ -36,10 +36,7 @@ root.render(
           element={<Navigation page={<Expenses />} />}
         />
       </Route>
-      <Route
-        path="/expense-tracker.github.io"
-        element={<Navigation to="/" />}
-      />
+      <Route path="/expense-tracker.github.io" element={<Navigate to="/" />} />
       <Route path="*" element={<Navigation page={<PageNotFound />} />} />
     </Routes>
   </BrowserRouter>
