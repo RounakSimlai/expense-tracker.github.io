@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navigation from "./components/UI/Navigation";
 import PageNotFound from "./pages/PageNotFound";
 import Login from "./components/Authentication/Login";
@@ -11,7 +11,7 @@ import ProtectedRoute from "./components/Authentication/ProtectedRoute";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter basename="/expense-tracker.github.io">
+  <HashRouter basename="/expense-tracker.github.io">
     <Routes>
       <Route
         path="/"
@@ -31,5 +31,5 @@ root.render(
       </Route>
       <Route path="*" element={<Navigation page={<PageNotFound />} />} />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
