@@ -24,11 +24,22 @@ root.render(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/dashboard" element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Navigation page={<Dashboard />} />} />
+        <Route
+          path="/dashboard"
+          element={<Navigation page={<Dashboard />} />}
+        />
       </Route>
       <Route path="/expenses" element={<ProtectedRoute />}>
-        <Route exact path="/expenses" element={<Navigation page={<Expenses />} />} />
+        <Route
+          exact
+          path="/expenses"
+          element={<Navigation page={<Expenses />} />}
+        />
       </Route>
+      <Route
+        path="/expense-tracker.github.io"
+        element={<Navigation to="/" />}
+      />
       <Route path="*" element={<Navigation page={<PageNotFound />} />} />
     </Routes>
   </BrowserRouter>
