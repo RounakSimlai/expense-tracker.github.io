@@ -11,40 +11,25 @@ import ProtectedRoute from "./components/Authentication/ProtectedRoute";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/expense-tracker.github.io">
     <Routes>
-      <Route path="/expense-tracker.github.io">
-        <Route
-          path="/"
-          element={
-            <Navigate
-              to={
-                sessionStorage.getItem("isLoggedIn") ? "/dashboard" : "/login"
-              }
-            />
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<ProtectedRoute />}>
-          <Route
-            path="/dashboard"
-            element={<Navigation page={<Dashboard />} />}
+      <Route
+        path="/"
+        element={
+          <Navigate
+            to={sessionStorage.getItem("isLoggedIn") ? "/dashboard" : "/login"}
           />
-        </Route>
-        <Route path="/expenses" element={<ProtectedRoute />}>
-          <Route
-            exact
-            path="/expenses"
-            element={<Navigation page={<Expenses />} />}
-          />
-        </Route>
-        {/* <Route
-          path="/expense-tracker.github.io"
-          element={<Navigate to="/" />}
-        /> */}
-        <Route path="*" element={<Navigation page={<PageNotFound />} />} />
+        }
+      />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<Navigation page={<Dashboard />} />} />
       </Route>
+      <Route path="/expenses" element={<ProtectedRoute />}>
+        <Route exact path="/expenses" element={<Navigation page={<Expenses />} />} />
+      </Route>
+      <Route path="*" element={<Navigation page={<PageNotFound />} />} />
     </Routes>
   </BrowserRouter>
 );
